@@ -2,7 +2,7 @@ name: Deployment
 on:
   push:
     branches:
-      - master
+      - main
       - dev
 env:
   MONGODB_DB_NAME: gha-demo
@@ -10,8 +10,8 @@ jobs:
   test:
     env:
       MONGODB_CLUSTER_ADDRESS: # ip mongodb 
-      MONGODB_USERNAME: # user
-      MONGODB_PASSWORD: # password
+      MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }} # user
+      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }} # password
       PORT: 8080
     runs-on: ubuntu-latest
     steps:
